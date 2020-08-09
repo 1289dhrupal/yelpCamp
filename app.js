@@ -8,7 +8,6 @@ var express     = require("express"),
     methodOverride = require("method-override"),
     User        = require("./models/user"),
     seedDB      = require("./seeds")
-    
 //requiring routes
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
@@ -21,13 +20,15 @@ mongoose.connect(url, {
 })
 .then(() => console.log('Connected to DB!'))
 .catch(error => console.log(error.message));
+mongoose.set('useFindAndModify', false);
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 // seedDB(); //seed the database
-
+app.locals.moment = require('moment')
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret: "Once again Rusty wins cutest dog!",

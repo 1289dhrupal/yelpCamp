@@ -1,6 +1,6 @@
 const express  = require("express");
 const Campground = require("../models/campground");
-const campground = require("../models/campground");
+const Comment = require("../models/comment");
 const router   = express.Router();
 const middleware = require("../middleware");
 //Index - show all components
