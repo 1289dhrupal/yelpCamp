@@ -8,6 +8,7 @@
     padding: 9px;
 }
 
-.delete-form{
-    display: inline;
+.card-img-top {
+    height: 10em;
+    object-fit: cover;
 }
