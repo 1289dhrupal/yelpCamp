@@ -12,16 +12,15 @@
             <h3>Our Most Popular CampGrounds</h3>
         </div>
     </div>
-
-    <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <div class="row text-center">
         <% campgrounds.forEach(function (campground) { %>
-            <div class="col-md-3 col-sm-6">
-                <div class="thumbnail">
-                    <img src="<%= campground.image%>">
-                    <div class="caption">
-                        <h4><%= campground.name %></h4>
+            <div class="col-md-4 col-sm-6 col-lg-3 mb-4">
+                <div class="card">
+                    <img class="card-img-top" alt="Image for <%= campground.name %>" src="<%= campground.image%>">
+                        <div class="card-body">
+                        <h4 class="card-title"><%= campground.name %></h4>
+                        <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More Information</a>
                     </div>
-                    <p><a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More Information</a></p>
                 </div>
             </div>
         <% });  %>        
