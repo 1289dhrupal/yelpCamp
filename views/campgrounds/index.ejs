@@ -16,7 +16,7 @@
         <% campgrounds.forEach(function (campground) { %>
             <div class="col-md-4 col-sm-6 col-lg-3 mb-4">
                 <div class="card">
-                    <img class="card-img-top" alt="Image for <%= campground.name %>" src="<%= campground.image%>">
+                    <img class="card-img-top" id="card-index" alt="Image for <%= campground.name %>" src="<%= campground.image%>">
                         <div class="card-body">
                         <h4 class="card-title"><%= campground.name %></h4>
                         <a href="/campgrounds/<%=campground._id%>" class="btn btn-primary">More Information</a>

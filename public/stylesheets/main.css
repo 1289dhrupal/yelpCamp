@@ -11,7 +11,7 @@
 .delete-form{
     display: inline;
 }
-.card-img-top {
+#card-index {
     height: 10em;
     object-fit: cover;
 }
