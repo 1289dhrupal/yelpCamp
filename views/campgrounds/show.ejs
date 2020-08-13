@@ -1,21 +1,23 @@
 <%- include("../partials/header") %>
 <div class="row">
     <div class="col-md-3 mb-5">
-        <div class="list-group">
-            <li class="list-group-item active"> Info 1 </li>
-            <li class="list-group-item"> Info 2 </li>
-            <li class="list-group-item"> Info 3 </li>
-        </div>
+        <ul class="list-group list-unstyled">
+            <li><a href="#image" class="list-group-item list-group-item-action active">
+              Image
+            </a></li>
+            <li><a href="#description" class="list-group-item list-group-item-action">Description</a></li>
+            <li><a href="#comments" class="list-group-item list-group-item-action">Comments</a></li>
+          </ul>
     </div>
     <div class="col-md-9 mb-5">
         <div class="card mb-5">
-            <img class="card-img-top" alt="Image for <%= campground.name %>" src="<%= campground.image%>">
+            <img class="card-img-top" id="image" alt="Image for <%= campground.name %>" src="<%= campground.image%>">
             <div class="card-body">
                 <h4 class="float-right"><%=campground.price%> ₹/night</h4>
-                <h4 class="card-title"><%= campground.name %></h4>
+                <h4 class="card-title" id="description"><%= campground.name %></h4>
                 <p class="card-text"><em>Submitted by: <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %></em></p>
                 <hr>
-                <p class="card-text"><%= campground.description%></p>   
+                <p class="card-text" ><%= campground.description%></p>   
                     <%if(currentUser && campground.author.id.equals(currentUser._id)){%>
                     <a href="/campgrounds/<%=campground._id %>/edit" class="btn btn-sm btn-warning">Edit</a>
                     <form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
@@ -24,7 +26,7 @@
                 <%}%>
             </div>
         </div>
-        <div class="card">
+        <div class="card" id="comments">
             <div class="card-header bg-white border-0 text-right">
                 <a href="/campgrounds/<%=campground._id%>/comments/new" class="btn btn-success">Leave a comment</a>
             </div>
@@ -50,4 +52,15 @@
         </div>
     </div>
 </div>
+<script>
+    var squares = document.querySelectorAll(".list-group-item");
+    squares.forEach(function(data){
+        data.addEventListener("click", function(){
+            squares.forEach(function(x){
+                x.classList.remove("active");
+            });
+            this.classList.add("active");   
+        });
+    });
+    </script>
 <%- include("../partials/footer") %>
